@@ -1,8 +1,8 @@
 import click
 from flask import current_app
 
-from supps import create_app
-from supps.extensions import db
+from insulinfirst import create_app
+from insulinfirst.extensions import db
 
 HERE = ''
 
@@ -38,10 +38,10 @@ def create_db():
 
 @app.cli.command()
 def run_scrapers():
-    from supps.tasks.bodybuilding.bb_casein import scrape_bodybuilding_casein
+    from insulinfirst.tasks.amazon.amazon_strips import amazon_strips
 
     click.echo('Running Scrapers!')
-    scrape_bodybuilding_casein()
+    amazon_strips()
 
     click.echo('Scrapers Finished!')
 

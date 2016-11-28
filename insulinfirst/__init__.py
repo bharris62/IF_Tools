@@ -1,4 +1,4 @@
-from supps import app
+from insulinfirst import app
 
 
 def create_app():

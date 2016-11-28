@@ -3,8 +3,8 @@ import os
 from flask import Flask, render_template, redirect
 from datetime import datetime, timedelta
 
-from supps.extensions import db
-from supps.models import Product
+from insulinfirst.extensions import db
+from insulinfirst.models import Product
 
 
 BASE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..')
@@ -26,7 +26,7 @@ def create_app(package_name, settings_override=None):
 
     # For Heroku
 
-    #napp.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
     if settings_override:
         app.config.from_object(settings_override)
@@ -37,8 +37,10 @@ def create_app(package_name, settings_override=None):
 
     # You'll want to probably turn this into a blueprint eventually.
     # http://flask.pocoo.org/docs/0.11/blueprints/#blueprints
-    @app.route("/", subdomain='tools')
+    @app.route("/")
     def home():
-        return "Hello, World!"
+        products = db.session.query(Product).filter(Product.product_type == 'Test Strips').order_by(Product.product_price_per_strip)
+        return render_template('base.html',
+                               products=products)
 
     return app

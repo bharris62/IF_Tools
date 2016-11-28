@@ -1,6 +1,6 @@
 import os
 
-from supps import create_app
+from insulinfirst import create_app
 
 app = create_app()
 

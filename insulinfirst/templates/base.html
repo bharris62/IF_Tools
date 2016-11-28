@@ -1,0 +1,45 @@
+<section id="main-content">
+          <section class="wrapper site-min-height">
+            <h6 class="text-center">
+                Currently working to normalize some of the price per serving/pound! Also, looking to add 2-3 more sites
+                to aggregate data from in the next couple of days.
+
+            </h6>
+            <h6 class="text-center">-supps.io</h6>
+            <h1 class="text-center">{{ type_product }}</h1>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          		 <table id="myTable"class="display responsive" width="100%">
+                 <p6 style="font-style:italic;">click on the heading to sort; click link to go to dealer site to buy</p6>
+                      <thead>
+                        <tr>
+                            <th class="all">Image</th>
+                            <th class="all">Name</th>
+                            <th class="all">Price Per Pound</th>
+                            <th class="desktop">Price</th>
+                            <th class="desktop">Type</th>
+                            <th class="desktop">Description</th>
+                            <th class="desktop">Manufacturer</th>
+                            <th class="desktop">Seller</th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <th scope="row"><a target="_blank" href="{{ product.product_url }}"><img src="{{ product.product_image }}" alt="{{ product.product_name }}" height=70 width=70></a></th>
+                            <td><a target="_blank" href="{{ product.product_url }}">{{ product.product_name }}</a></td>
+                            <td>{{ product.product_price_per_strip }}</td>
+                            <td>{{ product.product_price }}</td>
+                            <td>{{ product.product_type }}</td>
+                            <td>{{ product.product_description }}</td>
+                            <td>{{ product.product_manufacturer }}</td>
+                            <td>{{ product.product_dealer }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+          		</div>
+          	</div>
+
+		</section><!--/wrapper -->
+      </section><!--/MAIN CONTENT -->
